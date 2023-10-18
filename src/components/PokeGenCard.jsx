@@ -10,7 +10,7 @@ import { Card } from 'react-native-elements';
 function PokeGenCard(props){
 
     const [pokemonData, setPokemonData] = useState([]);
-    const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10/';
+    const apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=2/';
 
     useEffect(() => {
     // Hacer una solicitud a la API para obtener una lista de Pokémon
@@ -44,6 +44,7 @@ function PokeGenCard(props){
                         source={{ uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png` }}
                         style={{ width: 100, height: 100 }}
                     />
+                    <Text>{pokemon.name}</Text>
                     <Text>{pokemon.name}</Text>
                 </Card>
             ))}
