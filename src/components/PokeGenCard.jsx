@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
 import axios from 'axios';
+import { TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
+
 
 function PokeGenCard({ genNum }) {
   const [pokemonData, setPokemonData] = useState([]);
@@ -19,16 +22,24 @@ function PokeGenCard({ genNum }) {
       });
   }, [genNum]);
 
+  const handleItemPress = (pokemonName) => {
+    // Redirigir a otra pantalla con el nombre del Pokémon tocado
+    navigation.navigate('PokeCard', { pokemonName });
+    console.log(pokemonName);
+  };
+
   const renderItem = ({ item }) => (
-    <Card key={item.name} style={styles.card}>
-      <Image
-        source={{
-          uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.url.split('/')[6]}.png`,
-        }}
-        style={{ width: 100, height: 100 }}
-      />
-      <Text>{item.name}</Text>
-    </Card>
+    <TouchableOpacity onPress={() => handleItemPress(item.name)}>
+      <Card key={item.name} style={styles.card}>
+        <Image
+          source={{
+            uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.url.split('/')[6]}.png`,
+          }}
+          style={{ width: 100, height: 100 }}
+        />
+        <Text>{item.name}</Text>
+      </Card>
+    </TouchableOpacity>
   );
 
   return (

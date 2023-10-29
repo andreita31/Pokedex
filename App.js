@@ -6,6 +6,7 @@ import Pokedex from './src/components/Pokedex'; // Importa el componente Pokedex
 import Generacion from './src/components/Generacion';
 import PokemonT from './src/components/PokemonT';
 
+
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -31,12 +32,13 @@ const AppNavigator = () => {
             },
           }}
         />
-        <Stack.Screen
+         <Stack.Screen
           name="PokemonT"
           component={PokemonT}
           options={{
             headerStyle: {
-              backgroundColor: '#008000', // Cambia el color de fondo de la barra de navegación
+              backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación
+              
             },
           }}
         />
