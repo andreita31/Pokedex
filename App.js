@@ -37,7 +37,7 @@ const AppNavigator = () => {
           component={PokemonT}
           options={{
             headerStyle: {
-              backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación
+              backgroundColor: '#008500', // Cambia el color de fondo de la barra de navegación
               
             },
           }}
