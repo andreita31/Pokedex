@@ -2,8 +2,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Pokedex from './src/components/Pokedex'; // Importa el componente Pokedex
+//import SignUp from './SignUp'; // Importa el componente SignUp
 import Generacion from './src/components/Generacion';
-import PokeCard from './src/components/PokeCard';
+import PokemonT from './src/components/PokemonT';
 
 const Stack = createStackNavigator();
 
@@ -30,13 +31,12 @@ const AppNavigator = () => {
             },
           }}
         />
-         <Stack.Screen
-          name="PokeCard"
-          component={PokeCard}
+        <Stack.Screen
+          name="PokemonT"
+          component={PokemonT}
           options={{
             headerStyle: {
-              backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación
-              
+              backgroundColor: '#008000', // Cambia el color de fondo de la barra de navegación
             },
           }}
         />
