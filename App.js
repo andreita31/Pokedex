@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import PokeGenCard from './src/components/PokeGenCard';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Pokedex from './src/components/Pokedex'; // Importa el componente Pokedex
+//import SignUp from './SignUp'; // Importa el componente SignUp
+import Gen1 from './src/components/Gen1';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const AppNavigator = () => {
   return (
-    <View style={styles.container}>
-      <PokeGenCard genNum="1" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="POKEDEX"
+          component={Pokedex}
+          options={{
+            headerStyle: {
+              backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación
+              
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Gen1"
+          component={Gen1}
+          options={{
+            headerStyle: {
+              backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación
+            },
+          }}
+        />
+      </Stack.Navigator>
 
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    // flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+      
+      
+    </NavigationContainer>
+  );
+};
+
+export default AppNavigator;
