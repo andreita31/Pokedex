@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Pokedex from './src/components/Pokedex'; // Importa el componente Pokedex
 //import SignUp from './SignUp'; // Importa el componente SignUp
-import Gen1 from './src/components/Gen1';
+import Generacion from './src/components/Generacion';
 
 const Stack = createStackNavigator();
 
@@ -22,8 +22,8 @@ const AppNavigator = () => {
           }}
         />
         <Stack.Screen
-          name="Gen1"
-          component={Gen1}
+          name="Generacion"
+          component={Generacion}
           options={{
             headerStyle: {
               backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación

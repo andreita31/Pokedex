@@ -3,9 +3,9 @@ import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
 import axios from 'axios';
 import { Card } from 'react-native-elements';
 
-function PokeGenCard(props) {
+function PokeGenCard({ genNum }) {
   const [pokemonData, setPokemonData] = useState([]);
-  const apiUrl = 'https://pokeapi.co/api/v2/generation/1';
+  const apiUrl = `https://pokeapi.co/api/v2/generation/${genNum}`;
 
   useEffect(() => {
     // Hacer una solicitud a la API para obtener una lista de Pokémon
@@ -17,7 +17,7 @@ function PokeGenCard(props) {
       .catch((error) => {
         console.error('Error al obtener datos de la API', error);
       });
-  }, []);
+  }, [genNum]);
 
   const renderItem = ({ item }) => (
     <Card key={item.name} style={styles.card}>
@@ -37,7 +37,7 @@ function PokeGenCard(props) {
         data={pokemonData}
         renderItem={renderItem}
         keyExtractor={(item) => item.name}
-        numColumns={2} // Aquí se especifica el número de columnas
+        numColumns={2}
       />
     </View>
   );

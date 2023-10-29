@@ -2,10 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import PokeGenCard from './PokeGenCard';
 
-export default function Gen1() {
+export default function Generacion({ route }) {
+    const { genNum } = route.params;
+  
     return (
       <View style={styles.container}>
-        <PokeGenCard genNum="1" />
+        <PokeGenCard genNum={genNum} />
       </View>
     );
   }

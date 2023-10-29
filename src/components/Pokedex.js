@@ -5,13 +5,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 function Pokedex({ navigation }) {
   const [searchText, setSearchText] = useState('');
+  global.genSelect;
 
   const handleSearch = (generation) => {
-    if (generation === 1) {
-      navigation.navigate('Gen1');
-    }else if (generation === 2) {
-        navigation.navigate('Gen1');
-      }
+   
+    if (generation){
+        navigation.navigate('Generacion', {genSelect:generation});
+        console.log(generation);
+    }else{
+    }
+      
+      
+
   };
 
   const handleSearchButton = () => {
@@ -20,6 +25,7 @@ function Pokedex({ navigation }) {
 
   const handleGenerationBox = (generation) => {
     handleSearch(generation);
+    navigation.navigate('Generacion', { genNum: generation });
   };
 
   const renderGenerationBoxes = () => {
