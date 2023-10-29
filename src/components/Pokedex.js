@@ -20,8 +20,9 @@ function Pokedex({ navigation }) {
   };
 
   const handleSearchButton = () => {
-    navigation.navigate('PokemonT', {pokeName: searchText});
+    navigation.navigate('PokemonT', {searchText});
     console.log(searchText)
+    navigation.navigate('PokemonT', { pokeName: searchText });
   };
 
   const handleGenerationBox = (generation) => {
