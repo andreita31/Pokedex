@@ -47,12 +47,14 @@ function Pokedex({ navigation }) {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Buscar"
-            value={searchText}
-            onChangeText={(text) => setSearchText(text)}
-          />
+        <TextInput
+          style={[styles.input, { color: 'white' }]}
+
+          placeholder="Buscar"
+          placeholderTextColor="white"
+          value={searchText}
+          onChangeText={(text) => setSearchText(text)}
+        />
           <Button title="Buscar" onPress={handleSearchButton} />
         </View>
       </View>

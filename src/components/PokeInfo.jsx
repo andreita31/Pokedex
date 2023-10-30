@@ -19,7 +19,6 @@ function PokeInfo({ pokeName }) {
         console.error('Error al obtener datos de la API', error);
       });
 
-
     axios
       .get(speciesUrl)
       .then((response) => {
@@ -34,34 +33,48 @@ function PokeInfo({ pokeName }) {
   }, [pokeName]);
 
   if (!pokemonData || !generationData) {
-    return null; 
+    return null;
   }
 
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
-        <Text>{pokemonData.name}</Text>
+        <Text style={styles.pokemonName}>
+          {pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}
+        </Text>
         <Image
           source={{
             uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`,
           }}
           style={{ width: 300, height: 300 }}
         />
-        <Text>Altura: {pokemonData.height}</Text>
-        <Text>Peso: {pokemonData.weight}</Text>
-        <Text>Especie: {pokemonData.species.name}</Text>
-        <Text>Tipo: {pokemonData.types[0].type.name}</Text>
-        <Text>Generación: {generationData.name}</Text>
-        <Text>Estadísticas Base:</Text>
-        <FlatList
-          data={pokemonData.stats}
-          keyExtractor={(item) => item.stat.name}
-          renderItem={({ item }) => (
-            <Text key={item.stat.name}>
-              {item.stat.name}: {item.base_stat}
-            </Text>
-          )}
-        />
+        <Text style={styles.boldText}>Generación:</Text>
+        <Text>{generationData.name}</Text>
+        <View style={styles.infoContainer}>
+          <View style={styles.column}>
+            <Text style={styles.boldText}>Altura:</Text>
+            <Text>{pokemonData.height}</Text>
+            <Text style={styles.boldText}>Especie:</Text>
+            <Text>{pokemonData.species.name}</Text>
+          </View>
+          <View style={styles.column}>
+            <Text style={styles.boldText}>Peso:</Text>
+            <Text>{pokemonData.weight}</Text>
+            <Text style={styles.boldText}>Tipo:</Text>
+            <Text>{pokemonData.types[0].type.name}</Text>
+          </View>
+        </View>
+        <View style={styles.statsHeader}>
+        <Text style={styles.boldText}>Estadísticas Base:</Text>
+      </View>
+        <View style={styles.statsContainer}>
+          {pokemonData.stats.map((stat) => (
+            <View key={stat.stat.name} style={styles.stat}>
+              <Text style={styles.boldText}>{stat.stat.name}:</Text>
+              <Text>{stat.base_stat}</Text>
+            </View>
+          ))}
+        </View>
       </Card>
     </View>
   );
@@ -76,6 +89,37 @@ const styles = StyleSheet.create({
   },
   card: {
     margin: 8,
+  },
+  pokemonName: {
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  column: {
+    flex: 1,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
+  stat: {
+    width: '45%', 
+    marginBottom: 10,
+    alignItems: 'center',
+  },
+  boldText: {
+    fontWeight: 'bold',
+  },
+  centeredText: {
+    textAlign: 'center',
+  },
+  statsHeader: {
+    marginTop: 10, 
   },
 });
 

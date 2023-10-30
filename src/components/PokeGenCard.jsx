@@ -6,15 +6,12 @@ import { Card } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 import PokemonT from './PokemonT';
 
-
-
 function PokeGenCard({ genNum }) {
   const [pokemonData, setPokemonData] = useState([]);
   const navigation = useNavigation();
   const apiUrl = `https://pokeapi.co/api/v2/generation/${genNum}`;
 
   useEffect(() => {
- 
     axios
       .get(apiUrl)
       .then((response) => {
@@ -27,8 +24,11 @@ function PokeGenCard({ genNum }) {
 
   const handleItemPress = (pokemonName) => {
     console.log(pokemonName);
-    navigation.navigate('PokemonT', {pokeName: pokemonName});
-  
+    navigation.navigate('PokemonT', { pokeName: pokemonName });
+  };
+
+  const capitalizeFirstLetter = (name) => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
   const renderItem = ({ item }) => (
@@ -40,7 +40,7 @@ function PokeGenCard({ genNum }) {
           }}
           style={{ width: 100, height: 100 }}
         />
-        <Text>{item.name}</Text>
+        <Text style={styles.pokemonName}>{capitalizeFirstLetter(item.name)}</Text>
       </Card>
     </TouchableOpacity>
   );
@@ -66,6 +66,10 @@ const styles = StyleSheet.create({
   },
   card: {
     margin: 8,
+  },
+  pokemonName: {
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 
