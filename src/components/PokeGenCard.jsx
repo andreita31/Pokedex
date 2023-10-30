@@ -7,12 +7,14 @@ import { useNavigation } from '@react-navigation/native';
 import PokemonT from './PokemonT';
 
 
+
 function PokeGenCard({ genNum }) {
   const [pokemonData, setPokemonData] = useState([]);
+  const navigation = useNavigation();
   const apiUrl = `https://pokeapi.co/api/v2/generation/${genNum}`;
 
   useEffect(() => {
-    // Hacer una solicitud a la API para obtener una lista de Pokémon
+ 
     axios
       .get(apiUrl)
       .then((response) => {
@@ -24,9 +26,9 @@ function PokeGenCard({ genNum }) {
   }, [genNum]);
 
   const handleItemPress = (pokemonName) => {
-    // Redirigir a otra pantalla con el nombre del Pokémon tocado
     console.log(pokemonName);
     navigation.navigate('PokemonT', {pokeName: pokemonName});
+  
   };
 
   const renderItem = ({ item }) => (

@@ -10,7 +10,6 @@ function PokeInfo({ pokeName }) {
   const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokeName}`;
 
   useEffect(() => {
-    // Hacer una solicitud a la API para obtener los datos del Pokémon
     axios
       .get(apiUrl)
       .then((response) => {
@@ -20,7 +19,7 @@ function PokeInfo({ pokeName }) {
         console.error('Error al obtener datos de la API', error);
       });
 
-    // Hacer una solicitud a la API para obtener la generación
+
     axios
       .get(speciesUrl)
       .then((response) => {
@@ -35,7 +34,7 @@ function PokeInfo({ pokeName }) {
   }, [pokeName]);
 
   if (!pokemonData || !generationData) {
-    return null; // Mientras se cargan los datos, no renderizamos nada
+    return null; 
   }
 
   return (

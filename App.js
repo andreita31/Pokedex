@@ -18,7 +18,7 @@ const AppNavigator = () => {
           component={Pokedex}
           options={{
             headerStyle: {
-              backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación
+              backgroundColor: '#dc0a2d', 
               
             },
           }}
@@ -28,7 +28,7 @@ const AppNavigator = () => {
           component={Generacion}
           options={{
             headerStyle: {
-              backgroundColor: '#dc0a2d', // Cambia el color de fondo de la barra de navegación
+              backgroundColor: '#dc0a2d',
             },
           }}
         />

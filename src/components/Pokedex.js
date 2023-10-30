@@ -20,7 +20,6 @@ function Pokedex({ navigation }) {
   };
 
   const handleSearchButton = () => {
-    navigation.navigate('PokemonT', {searchText});
     console.log(searchText)
     navigation.navigate('PokemonT', { pokeName: searchText });
   };

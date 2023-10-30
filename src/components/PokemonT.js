@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import PokeInfo from './PokeInfo';
 
 export default function PokemonT({route}) {
-  const { pokeName } = route.params;
+  const { pokeName } = route.params || {};
+
+  
     return (
       <View style={styles.container}>
         <PokeInfo pokeName={pokeName}/>
@@ -14,7 +16,6 @@ export default function PokemonT({route}) {
   const styles = StyleSheet.create({
     container: {
       display: 'flex',
-      // flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',

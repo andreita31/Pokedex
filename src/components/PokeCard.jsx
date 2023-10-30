@@ -4,7 +4,7 @@ import React from 'react';
 
 function PokeCard() {
   const route = useRoute();
-  const { pokemonName } = route.params; // Obtener el nombre del Pokémon de los parámetros de la ruta
+  const { pokemonName } = route.params;
 
   return (
     <View>
